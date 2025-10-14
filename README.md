@@ -1,4 +1,4 @@
-# 🎓 Okula Bukula - Hugo Dokümantasyon
+# Okula Bukula - Hugo Dokümantasyon
 
 **Yapay Zekâ Destekli Sınav Değerlendirme Platformu - Teknik Dokümantasyon**
 
@@ -6,22 +6,22 @@ Bu proje, Okula Bukula sisteminin tüm teknik dokümantasyonunu içeren Hugo tab
 
 ---
 
-## 📚 İçerik
+## İçerik
 
 Bu dokümantasyon şunları kapsar:
 
-- 🗄️ **Veritabanı Tasarımı**: Multi-tenant PostgreSQL şeması (12 tablo)
-- 🔧 **Supabase Kurulumu**: Adım adım kurulum rehberi
-- 💻 **Authentication Sistemi**: Supabase Auth entegrasyonu
-- 📖 **Implementation Rehberleri**: Özellik geliştirme kılavuzları
-- 🔒 **RBAC Güvenlik**: Rol bazlı erişim kontrolü (46 izin)
-- 🌐 **API Dokümantasyonu**: REST API endpoint'leri
-- 🎨 **Figma Tasarımları**: Mobil uygulama UI/UX ekranları
-- 📋 **Changelog**: Versiyon geçmişi ve güncellemeler
+- **Veritabanı Tasarımı**: Multi-tenant PostgreSQL şeması (12 tablo)
+- **Supabase Kurulumu**: Adım adım kurulum rehberi
+- **Authentication Sistemi**: Supabase Auth entegrasyonu
+- **Implementation Rehberleri**: Özellik geliştirme kılavuzları
+- **RBAC Güvenlik**: Rol bazlı erişim kontrolü (46 izin)
+- **API Dokümantasyonu**: REST API endpoint'leri
+- **Figma Tasarımları**: Mobil uygulama UI/UX ekranları
+- **Changelog**: Versiyon geçmişi ve güncellemeler
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## Hızlı Başlangıç
 
 ### Gereksinimler
 
@@ -50,19 +50,19 @@ hugo server -D
 
 ---
 
-## 🌐 GitHub Pages Deployment
+## GitHub Pages Deployment
 
 Bu proje GitHub Actions ile otomatik olarak GitHub Pages'e deploy edilir.
 
-### 📦 Canlı Site
+### Canlı Site
 **URL:** https://intronauts.github.io/intronauts-hugo-documentation/
 
-### 🚀 Otomatik Deployment
+### Otomatik Deployment
 - Her `main` branch'e push edildiğinde otomatik olarak build ve deploy edilir
 - GitHub Actions workflow: `.github/workflows/deploy.yml`
 - Ortalama build süresi: 1-2 dakika
 
-### 📋 Deployment Adımları
+### Deployment Adımları
 
 1. **GitHub Repository Ayarları:**
    - Settings > Pages > Source: **GitHub Actions** seçin
@@ -82,7 +82,7 @@ Detaylı talimatlar için: `.github/workflows/deploy-instructions.md`
 
 ---
 
-## 📦 Üretim Build'i
+## Üretim Build'i
 
 ```bash
 hugo
@@ -92,7 +92,7 @@ Build dosyaları `public/` klasöründe oluşturulacaktır.
 
 ---
 
-## 📝 Yeni İçerik Ekleme
+## Yeni İçerik Ekleme
 
 Yeni bir dokümantasyon sayfası oluşturmak için:
 
@@ -171,7 +171,7 @@ intronauts-hugo-documentation/
 
 ---
 
-## ⚙️ Yapılandırma
+## Yapılandırma
 
 `hugo.toml` dosyasını düzenleyerek site ayarlarını özelleştirebilirsiniz:
 
@@ -190,60 +190,60 @@ intronauts-hugo-documentation/
 
 ---
 
-## 🎨 Kullanılan Tema
+## Kullanılan Tema
 
 Bu proje [Hugo Book](https://github.com/alex-shpak/hugo-book) temasını kullanmaktadır.
 
 ### Tema Özellikleri:
-- 🌓 Açık/Koyu tema desteği
-- 🔍 Yerleşik arama fonksiyonu
-- 📱 Mobil uyumlu responsive tasarım
-- ⚡ Hızlı sayfa yükleme
-- 📝 Markdown ve shortcode desteği
-- 🔗 Kolay navigasyon menüsü
+- Açık/Koyu tema desteği
+- Yerleşik arama fonksiyonu
+- Mobil uyumlu responsive tasarım
+- Hızlı sayfa yükleme
+- Markdown ve shortcode desteği
+- Kolay navigasyon menüsü
 
 ---
 
-## 📋 İçerik Kategorileri
+## İçerik Kategorileri
 
-### 🎯 Proje Dokümantasyonu
+### Proje Dokümantasyonu
 - Proje tanıtımı ve özellikleri
 - Sistem mimarisi
 - Roller ve yetkiler
 
-### 🗄️ Veritabanı
+### Veritabanı
 - Multi-tenant PostgreSQL şeması
 - 12 tablo ve ilişkiler
 - SQL migration dosyaları
 - Performans optimizasyonları
 
-### 🔧 Kurulum ve Yapılandırma
+### Kurulum ve Yapılandırma
 - Supabase kurulum rehberi
 - Auth entegrasyonu
 - Storage yapılandırması
 - API endpoint'leri
 
-### 💻 Teknik Dokümantasyon
+### Teknik Dokümantasyon
 - Authentication sistemi
 - Flutter implementasyonu
 - Row Level Security (RLS) politikaları
 
-### 📖 Geliştirme Rehberleri
+### Geliştirme Rehberleri
 - Feature implementasyon adımları
 - Best practices
 - Troubleshooting
 
-### 🔒 Güvenlik ve Referans
+### Güvenlik ve Referans
 - RBAC güvenlik sistemi
 - 46 detaylı izin yapısı
 - Changelog ve versiyon geçmişi
 
-### 🌐 API Dokümantasyonu
+### API Dokümantasyonu
 - REST API kullanım rehberi
 - Endpoint örnekleri
 - Request/Response formatları
 
-### 🎨 Tasarım
+### Tasarım
 - Figma mobil uygulama tasarımları
 - UI/UX ekranları (33 ekran)
 - Tasarım güncellemeleri

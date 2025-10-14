@@ -4,7 +4,7 @@ weight: 10
 bookCollapseSection: true
 ---
 
-# 🧠 AI Sınav Değerlendirme Sistemi - Veritabanı Tasarımı
+# AI Sınav Değerlendirme Sistemi - Veritabanı Tasarımı
 
 **Author:** Mehmet Ali GÜMÜŞLER  
 **Version:** 3.3 (Final Extended - Soft Delete, Performance Indexes, Auto Triggers)  
@@ -12,7 +12,7 @@ bookCollapseSection: true
 
 ---
 
-## 📘 Proje Hakkında
+## Proje Hakkında
 
 Bu proje, AI destekli sınav değerlendirme sistemi için geliştirilmiş kapsamlı ilişkisel veritabanı yapısını içerir.  
 Sistem, öğretmenlerin sınav oluşturması, cevap anahtarlarını yüklemesi ve yapay zekâ ile öğrenci sınav kâğıtlarını otomatik olarak değerlendirmesine olanak tanır.  
@@ -20,15 +20,15 @@ Sistem, öğretmenlerin sınav oluşturması, cevap anahtarlarını yüklemesi v
 
 ---
 
-## 🧩 Veritabanı Şeması
+## Veritabanı Şeması
 
-### 🏫 Okul ve Kurum Yönetimi
+### Okul ve Kurum Yönetimi
 
 | Tablo | Açıklama |
 |-------|-----------|
 | **schools** | Multi-tenant yapı için okul/kurum bilgileri |
 
-### 👥 Kullanıcı ve Yetki Yönetimi
+### Kullanıcı ve Yetki Yönetimi
 
 | Tablo | Açıklama |
 |-------|-----------|
@@ -37,7 +37,7 @@ Sistem, öğretmenlerin sınav oluşturması, cevap anahtarlarını yüklemesi v
 | **permissions** | Detaylı sistem izinleri (46 farklı yetki) |
 | **role_permissions** | Roller ve izinler arasındaki ilişki |
 
-### 🏫 Sınıf ve Müfredat Yönetimi
+### Sınıf ve Müfredat Yönetimi
 
 | Tablo | Açıklama |
 |-------|-----------|
@@ -46,7 +46,7 @@ Sistem, öğretmenlerin sınav oluşturması, cevap anahtarlarını yüklemesi v
 | **syllabi** | Sınıf müfredatları (PDF/Word dosyaları) |
 | **syllabus_topics** | Müfredat konu başlıkları (hiyerarşik yapı) |
 
-### 📝 Sınav ve Değerlendirme Yönetimi
+### Sınav ve Değerlendirme Yönetimi
 
 | Tablo | Açıklama |
 |-------|-----------|
@@ -57,7 +57,7 @@ Sistem, öğretmenlerin sınav oluşturması, cevap anahtarlarını yüklemesi v
 
 ---
 
-## 🖼️ Diyagram Görünümü
+## Diyagram Görünümü
 
 Veritabanı diyagramı, dbdiagram.io üzerinden tasarlanmıştır.
 
@@ -65,36 +65,36 @@ Veritabanı diyagramı, dbdiagram.io üzerinden tasarlanmıştır.
 
 ---
 
-## 🧠 Sistem Özellikleri
+## Sistem Özellikleri
 
-### 🏫 Multi-Tenant Okul Yapısı:
+### Multi-Tenant Okul Yapısı:
 - **Okul Bazlı İzolasyon**: Her okul kendi verilerini görür, diğer okullardan izole
 - **Okul Numarası Benzersizliği**: Öğrenci numaraları okul içinde benzersiz
 - **Kurumsal Güvenlik**: Veriler okul bazlı ayrılmış, güvenlik sağlanmış
 
-### 👩‍🏫 Öğretmen:
+### Öğretmen:
 - **Sınıf Yönetimi**: Kendi okulunda sınıf oluşturur, öğrencileri davet kodu ile ekler
 - **Müfredat Yönetimi**: Syllabus dosyalarını yükler, konu başlıklarını organize eder
 - **Sınav Oluşturma**: AI destekli sınav editörü ile soru hazırlar
 - **Değerlendirme**: AI puanlarını inceler, manuel düzenlemeler yapar
 - **Raporlama**: Sınıf ve öğrenci bazında analiz görüntüler
 
-### 🧑‍🎓 Öğrenci:
+### Öğrenci:
 - **Sınıfa Katılım**: Davet kodu ile sınıfa katılır
 - **Sonuç Görüntüleme**: Sadece kendi sınav sonuçlarını, geri bildirimleri inceler
 - **Gelişim Takibi**: Kişisel gelişim grafiği ve konu bazlı analiz görür
 
-### 👨‍💼 Editör/Gözetmen:
+### Editör/Gözetmen:
 - **Kurumsal Görüntüleme**: Okuldaki tüm sınıfları, sınavları ve sonuçları görüntüler
 - **Sadece Okuma Yetkisi**: Veri değiştirme yetkisi yok, sadece analiz ve raporlama
 
-### 👑 Admin:
+### Admin:
 - **Tam Yetki**: Sistemdeki tüm işlemleri yapabilir
 - **Kullanıcı Yönetimi**: Tüm kullanıcıları yönetebilir
 
 ---
 
-## 🧾 AI ve Veri Yapısı
+## AI ve Veri Yapısı
 
 ### **AI Entegrasyonu:**
 - **OCR Modülü**: El yazısı sınav kağıtlarını dijital metne çevirir

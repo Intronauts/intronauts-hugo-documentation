@@ -3,24 +3,24 @@ title: "Tüm Geçmiş"
 weight: 50
 ---
 
-# � Tüm Değişiklik Geçmişi
+#  � Tüm Değişiklik Geçmişi
 
 > **Tüm Değişikliklerin Detaylı Kaydı**  
 > Bu dokümanda projeye yapılan tüm değişiklikler tarihsel olarak kayıt altındadır.
 
 ---
 
-## [1.3.0] - 2025-10-14
+##  [1.3.0] - 2025-10-14
 
-### 🎯 Sınıf Detayları ve RLS Düzeltmeleri
+# Sınıf Detayları ve RLS Düzeltmeleri
 
 Bu versiyon ile sınıf detay sayfaları iyileştirildi ve RLS politikalarından kaynaklanan veri erişim sorunları RPC fonksiyonları ile çözüldü.
 
 ---
 
-### 🐛 Düzeltilen Hatalar
+# Düzeltilen Hatalar
 
-#### 1. Öğrenci "Sınıfa Katıl" Butonu Kayboluyor ✅
+####  1. Öğrenci "Sınıfa Katıl" Butonu Kayboluyor ✅
 
 **Problem:**
 - Öğrenci bir sınıfa katıldıktan sonra FloatingActionButton kayboluyordu
@@ -35,7 +35,7 @@ Bu versiyon ile sınıf detay sayfaları iyileştirildi ve RLS politikalarından
 - `lib/presentation/screens/student_class_list_screen.dart`
 - `lib/presentation/widgets/main_layout.dart`
 
-#### 2. Sınıf Detaylarında Statik Veri Gösteriliyor ✅
+####  2. Sınıf Detaylarında Statik Veri Gösteriliyor ✅
 
 **Problem:**
 - Sınıf detay sayfasında gerçek veri yerine mock data gösteriliyordu
@@ -49,7 +49,7 @@ Bu versiyon ile sınıf detay sayfaları iyileştirildi ve RLS politikalarından
 - `lib/services/class_member_service.dart`
 - `lib/presentation/screens/class_detail_screen.dart`
 
-#### 3. RLS Policy Sonsuz Döngü Hatası ✅
+####  3. RLS Policy Sonsuz Döngü Hatası ✅
 
 **Problem:**
 - `classes` ve `class_members` tabloları arasında circular dependency
@@ -64,7 +64,7 @@ Bu versiyon ile sınıf detay sayfaları iyileştirildi ve RLS politikalarından
 - `get_class_student_count(p_class_id int)`
 - `get_class_students(p_class_id int)`
 
-#### 4. Öğrenci Listesi Görünmüyor ✅
+####  4. Öğrenci Listesi Görünmüyor ✅
 
 **Problem:**
 - Öğrenci sayısı doğru (4) ama liste boş geliyordu
@@ -76,9 +76,9 @@ Bu versiyon ile sınıf detay sayfaları iyileştirildi ve RLS politikalarından
 
 ---
 
-### ✨ Yeni Özellikler
+###  Yeni Özellikler
 
-#### Backend (Supabase)
+####  Backend (Supabase)
 
 **1. RPC Fonksiyonları**
 
@@ -133,7 +133,7 @@ $$;
 - NULL-safe sorgular
 - Performans optimizasyonu
 
-#### Frontend (Flutter)
+####  Frontend (Flutter)
 
 **1. MainLayout Widget Güncellemesi**
 
@@ -222,22 +222,22 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-### 📝 Değiştirilen Dosyalar
+# Değiştirilen Dosyalar
 
-#### Flutter (5 dosya)
+####  Flutter (5 dosya)
 1. ✅ `lib/presentation/screens/student_class_list_screen.dart` - FAB always visible
 2. ✅ `lib/presentation/widgets/main_layout.dart` - FAB customization
 3. ✅ `lib/services/class_member_service.dart` - RPC methods
 4. ✅ `lib/presentation/widgets/class_card.dart` - Student count parameter
 5. ✅ `lib/presentation/screens/class_detail_screen.dart` - Real data display
 
-#### Supabase (2 fonksiyon)
+####  Supabase (2 fonksiyon)
 1. ✅ `get_class_student_count.sql` - Öğrenci sayısı
 2. ✅ `get_class_students.sql` - Öğrenci listesi
 
 ---
 
-### ✅ Test Senaryoları
+# Test Senaryoları
 
 | # | Test | Durum | Açıklama |
 |---|------|-------|----------|
@@ -251,9 +251,9 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-### 🔧 Teknik Notlar
+# Teknik Notlar
 
-#### RLS vs RPC Yaklaşımı
+####  RLS vs RPC Yaklaşımı
 
 **Sorun:**
 - Supabase RLS politikaları circular dependency oluşturuyordu
@@ -276,14 +276,14 @@ List<Map<String, dynamic>> _students = [];
 - ⚠️ Fonksiyonların bakımı gerekir
 - ⚠️ Debug daha zor olabilir
 
-#### Backward Compatibility
+####  Backward Compatibility
 
 - ✅ `ClassCard` widget eski kullanıma uyumlu
 - ✅ `studentCount` parametresi opsiyonel
 - ✅ Mevcut kodlar değişiklik gerektirmiyor
 - ✅ Breaking change yok
 
-#### Kod Kalitesi
+####  Kod Kalitesi
 
 - ⚠️ Dart lint uyarıları (unnecessary cast) - düşük öncelik
 - ✅ Fonksiyonel olarak sorun yok
@@ -292,7 +292,7 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-### 📊 Performance Metrikleri
+# Performance Metrikleri
 
 | Metrik | Önceki | Sonraki | İyileştirme |
 |--------|--------|---------|-------------|
@@ -303,9 +303,9 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-### 🚀 Sonraki Adımlar
+# Sonraki Adımlar
 
-#### Öneriler (v1.4.0)
+####  Öneriler (v1.4.0)
 1. **Performans**
    - [ ] RPC fonksiyonlarına index ekle
    - [ ] Query result cache'leme
@@ -330,7 +330,7 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-### 👥 Etkilenen Kullanıcı Rolleri
+# Etkilenen Kullanıcı Rolleri
 
 | Rol | Değişiklikler | Etki |
 |-----|--------------|------|
@@ -341,7 +341,7 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-### 📊 İstatistikler
+# İstatistikler
 
 - **Değiştirilen Dosya:** 5 Flutter + 2 SQL
 - **Eklenen Kod Satırı:** ~300
@@ -353,17 +353,17 @@ List<Map<String, dynamic>> _students = [];
 
 ---
 
-## [1.2.0] - 2025-10-12
+##  [1.2.0] - 2025-10-12
 
-### 🎉 Phase 1 Tamamlandı
+###  Phase 1 Tamamlandı
 
 Bu versiyon ile sınıfa katılma özelliğinin tüm temel fonksiyonları tamamlandı ve production'a hazır hale getirildi.
 
 ---
 
-### ✨ Yeni Özellikler
+###  Yeni Özellikler
 
-#### Backend (Supabase)
+####  Backend (Supabase)
 
 **1. RLS Policies**
 - ✅ `class_members` tablosu policies (SELECT, INSERT, UPDATE)
@@ -380,7 +380,7 @@ Bu versiyon ile sınıfa katılma özelliğinin tüm temel fonksiyonları tamaml
 **3. Triggers**
 - ✅ `set_class_code` - Sınıf oluşturulurken otomatik kod
 
-#### Frontend (Flutter)
+####  Frontend (Flutter)
 
 **1. Yeni Modeller**
 - ✅ `ClassMemberModel` - Üyelik veri modeli
@@ -419,9 +419,9 @@ Bu versiyon ile sınıfa katılma özelliğinin tüm temel fonksiyonları tamaml
 
 ---
 
-### 🔄 Güncellemeler
+# Güncellemeler
 
-#### Backend
+####  Backend
 
 **1. RLS Policies Refactoring**
 ```sql
@@ -439,7 +439,7 @@ classes policy → class_members + users (ama döngü yok)
 - Debug logging eklendi (`RAISE NOTICE`)
 - Daha detaylı hata mesajları
 
-#### Frontend
+####  Frontend
 
 **1. AuthService**
 ```dart
@@ -477,9 +477,9 @@ classes policy → class_members + users (ama döngü yok)
 
 ---
 
-### 🐛 Çözülen Sorunlar
+# Çözülen Sorunlar
 
-#### Kritik Sorunlar (5)
+####  Kritik Sorunlar (5)
 
 **1. Infinite Recursion (RLS Döngüsü)** 🔴
 - **Semptom:** "infinite recursion detected in policy"
@@ -518,9 +518,9 @@ classes policy → class_members + users (ama döngü yok)
 
 ---
 
-### 📂 Dosya Değişiklikleri
+# Dosya Değişiklikleri
 
-#### Yeni Dosyalar (7)
+####  Yeni Dosyalar (7)
 
 1. `lib/data/models/class_member_model.dart` - Üyelik modeli
 2. `lib/services/class_member_service.dart` - Üyelik servisi
@@ -530,7 +530,7 @@ classes policy → class_members + users (ama döngü yok)
 6. `lib/presentation/screens/student_class_list_screen.dart` - Öğrenci listesi
 7. `lib/presentation/widgets/school_dropdown_field.dart` - Okul dropdown
 
-#### Güncellenen Dosyalar (4)
+####  Güncellenen Dosyalar (4)
 
 1. `lib/services/auth_service.dart`
    - Pre-validation eklendi
@@ -547,7 +547,7 @@ classes policy → class_members + users (ama döngü yok)
 4. `lib/presentation/screens/register_screen.dart`
    - School dropdown entegrasyonu
 
-#### Supabase Scripts (6)
+####  Supabase Scripts (6)
 
 1. `supabase/fix_classes_rls_policy.sql` ⭐
 2. `supabase/fix_class_members_rls_policy.sql` ⭐
@@ -558,7 +558,7 @@ classes policy → class_members + users (ama döngü yok)
 
 ---
 
-### 📊 İstatistikler
+# İstatistikler
 
 | Metrik | Değer |
 |--------|-------|
@@ -574,7 +574,7 @@ classes policy → class_members + users (ama döngü yok)
 
 ---
 
-### 🔒 Güvenlik İyileştirmeleri
+# Güvenlik İyileştirmeleri
 
 **1. RLS Policies**
 - Tüm tablolarda RLS aktif
@@ -602,7 +602,7 @@ classes policy → class_members + users (ama döngü yok)
 
 ---
 
-### 🧪 Test Coverage
+###  Test Coverage
 
 | Test Tipi | Senaryo Sayısı | Durum |
 |-----------|----------------|-------|
@@ -615,21 +615,21 @@ classes policy → class_members + users (ama döngü yok)
 
 ---
 
-### 📝 Breaking Changes
+# Breaking Changes
 
 **Yok** - Bu ilk major release, backward compatibility sorunu yok.
 
 ---
 
-### ⚠️ Deprecations
+# Deprecations
 
 **Yok** - Yeni özellik, deprecated bir şey yok.
 
 ---
 
-### 🔄 Migration Guide
+# Migration Guide
 
-#### Mevcut Projeden Upgrade
+####  Mevcut Projeden Upgrade
 
 Eğer projenizde eski version varsa:
 
@@ -671,7 +671,7 @@ if (!canCreate) {
 
 ---
 
-### 📚 Dokümantasyon
+# Dokümantasyon
 
 **Yeni Dokümantasyon:**
 - Hızlı Başlangıç Rehberi
@@ -690,13 +690,13 @@ if (!canCreate) {
 
 ---
 
-### 🎯 Bilinen Sorunlar
+# Bilinen Sorunlar
 
 **Yok** - Tüm kritik sorunlar çözüldü.
 
 ---
 
-### 🚀 Sonraki Versiyon (1.3.0)
+# Sonraki Versiyon (1.3.0)
 
 **Planlanan Özellikler:**
 
@@ -727,7 +727,7 @@ if (!canCreate) {
 
 ---
 
-### 👥 Katkıda Bulunanlar
+# Katkıda Bulunanlar
 
 - **Backend Developer** - RLS policies, database functions
 - **Flutter Developer** - Service layer, UI components
@@ -736,7 +736,7 @@ if (!canCreate) {
 
 ---
 
-### 📞 Destek
+# Destek
 
 Sorularınız için:
 - [GitHub Issues](https://github.com/your-repo/issues)
@@ -745,9 +745,9 @@ Sorularınız için:
 
 ---
 
-## [1.1.0] - 2025-10-11
+##  [1.1.0] - 2025-10-11
 
-### İlk Planlama
+###  İlk Planlama
 
 - Initial planning
 - Database schema design
@@ -756,9 +756,9 @@ Sorularınız için:
 
 ---
 
-## [1.0.0] - 2025-10-10
+##  [1.0.0] - 2025-10-10
 
-### Proje Başlangıcı
+###  Proje Başlangıcı
 
 - Initial commit
 - Basic project structure

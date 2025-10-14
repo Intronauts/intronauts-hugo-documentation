@@ -3,7 +3,7 @@ title: "Supabase Kurulum Rehberi"
 weight: 15
 ---
 
-# 🧠 AI Exam Evaluation System - Supabase Kurulum Rehberi
+# AI Exam Evaluation System - Supabase Kurulum Rehberi
 
 **Yazar:** Mehmet Ali GÜMÜŞLER  
 **Versiyon:** v3.3 (Final Extended)  
@@ -11,13 +11,13 @@ weight: 15
 
 ---
 
-## 🎯 Amaç
+## Amaç
 
 Bu dokümantasyon, sistemin ilk ve en temel bileşeni olan **Supabase altyapısının** adım adım nasıl kurulduğunu belgelemektedir. Amaç: Gerektiğinde Supabase'i sıfırdan yeniden kurabilmek.
 
 ---
 
-## 🪜 1️⃣ Proje Oluşturma
+## 1. Proje Oluşturma
 
 1. [https://supabase.com](https://supabase.com) adresinden giriş yapın
 2. **New Project** oluşturun → isim: `ai-exam-system`
@@ -33,11 +33,11 @@ Bu dokümantasyon, sistemin ilk ve en temel bileşeni olan **Supabase altyapıs�
 
 ---
 
-## 🧱 2️⃣ Veritabanı Şemasının Yüklenmesi
+## 2. Veritabanı Şemasının Yüklenmesi
 
 ### SQL Editor'da Sırayla Çalıştırılacak Dosyalar:
 
-#### 1️⃣ Temel Veritabanı Yapısı
+#### 1. Temel Veritabanı Yapısı
 - **Dosya:** [1-create_database.sql](/docs/database/sql/)
 - **İçerik:** v3.3 Final Extended şema
 - **Özellikler:**
@@ -63,18 +63,18 @@ student_papers
 student_paper_files
 ```
 
-#### 2️⃣ Roller ve İzinler
+#### 2. Roller ve İzinler
 - **Dosya:** [2-roller_ve_izinler_olustur.sql](/docs/database/sql/)
 - **İçerik:** 4 rol + 46 detaylı izin
 - **Roller:** student, teacher, admin, editor
 - **İzinler:** Granüler yetki kontrolü (class:create, exam:upload_papers, vb.)
 
-#### 3️⃣ Auth Entegrasyonu
+#### 3. Auth Entegrasyonu
 - **Dosya:** [3-usera_uuid_sutunu_ekle.sql](/docs/database/sql/)
 - **İçerik:** `users` tablosuna `auth_user_id` kolonu ekleme
 - **Amaç:** Supabase Auth ile kendi users tablosunu eşleştirme
 
-#### 4️⃣ Auth Otomatik Kullanıcı Oluşturma Sistemi
+#### 4. Auth Otomatik Kullanıcı Oluşturma Sistemi
 - **Dosya:** [4-auth_ile_user_bağlama.sql](/docs/database/sql/)
 - **İçerik:** Auth trigger sistemi ile otomatik kullanıcı oluşturma
 - **Özellikler:**
@@ -84,7 +84,7 @@ student_paper_files
   - Duplicate email kontrolü
   - Trigger: `on_auth_user_created`
 
-#### 5️⃣ Sınıf Kodu Üretici Sistemi
+#### 5. Sınıf Kodu Üretici Sistemi
 - **Dosya:** [5-class_code_generator.sql](/docs/database/sql/)
 - **İçerik:** Otomatik benzersiz sınıf kodu üretimi
 - **Özellikler:**
@@ -96,7 +96,7 @@ student_paper_files
 
 ---
 
-## 🔐 3️⃣ Auth (Kimlik Doğrulama) Ayarları
+## 3. Auth (Kimlik Doğrulama) Ayarları
 
 - **Email/Password Auth**: Aktif (varsayılan)
 - **Auth URL**: `https://<project-id>.supabase.co/auth/v1/`
@@ -109,7 +109,7 @@ student_paper_files
 
 ---
 
-## 📦 4️⃣ Storage (Dosya Depolama)
+## 4. Storage (Dosya Depolama)
 
 **Amaç:** Öğrencilerin sınav kağıtlarını (PDF/JPEG) depolamak.
 
@@ -142,9 +142,9 @@ USING (bucket_id = 'papers' AND auth.role() = 'teacher');
 
 ---
 
-## 🌐 5️⃣ API Endpoint'leri
+## 5. API Endpoint'leri
 
-### 📁 Hazır API Endpoint'leri
+### Hazır API Endpoint'leri
 
 Projede Flutter/Web client için hazır API çağrıları bulunmaktadır:
 
@@ -240,9 +240,9 @@ Body:
 
 ---
 
-## 🔒 6️⃣ Row Level Security (RLS) Politikaları
+## 6. Row Level Security (RLS) Politikaları
 
-### ✅ Aktif Edilen Politikalar:
+### Aktif Edilen Politikalar:
 
 #### Classes Tablosu Politikası
 
@@ -264,7 +264,7 @@ Detaylı bilgiler için: [RLS Policies](/docs/security/rls-policies)
 
 ---
 
-## 📋 7️⃣ Kurulum Kontrol Listesi
+## 7. Kurulum Kontrol Listesi
 
 | Adım | Durum | Açıklama |
 |------|--------|-----------|
@@ -283,7 +283,7 @@ Detaylı bilgiler için: [RLS Policies](/docs/security/rls-policies)
 
 ---
 
-## 🔜 Gelecek Adımlar
+## Gelecek Adımlar
 
 1. **RLS Politikalarını Genişletme**
    - Tüm tablolar için detaylı güvenlik politikaları
@@ -305,7 +305,7 @@ Detaylı bilgiler için: [RLS Policies](/docs/security/rls-policies)
 
 ---
 
-## 📚 İlgili Dökümanlar
+## İlgili Dökümanlar
 
 - [Database Şeması](/docs/database/)
 - [SQL Dosyaları](/docs/database/sql/)
@@ -315,7 +315,7 @@ Detaylı bilgiler için: [RLS Policies](/docs/security/rls-policies)
 
 ---
 
-## 📜 Lisans
+## Lisans
 
 Bu proje Mehmet Ali GÜMÜŞLER tarafından hazırlanmıştır.  
 Kişisel ve eğitimsel kullanım içindir.  

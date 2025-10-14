@@ -3,14 +3,14 @@ title: "RBAC Güvenlik"
 weight: 51
 ---
 
-# 🔒 RBAC Güvenlik Dokümantasyonu
+# RBAC Güvenlik Dokümantasyonu
 
 > **Role-Based Access Control Implementasyonu**  
 > Bu dokümanda rol bazlı yetkilendirme sisteminin tam detayları bulunmaktadır.
 
 ---
 
-## 📋 İçindekiler
+## İçindekiler
 
 1. [Genel Bakış](#genel-bakış)
 2. [Rol Tanımları](#rol-tanımları)
@@ -22,7 +22,7 @@ weight: 51
 
 ---
 
-## 🎯 Genel Bakış
+## Genel Bakış
 
 ### Problem
 
@@ -41,7 +41,7 @@ Sistemde güvenlik açıkları vardı:
 
 ---
 
-## 👥 Rol Tanımları
+## Rol Tanımları
 
 ### Role Tablosu
 
@@ -152,7 +152,7 @@ INSERT INTO roles (id, name) VALUES
 
 ---
 
-## 📊 Permission Matrix
+## Permission Matrix
 
 | İşlem | Student | Teacher | Admin | Editor |
 |-------|---------|---------|-------|--------|
@@ -184,7 +184,7 @@ INSERT INTO roles (id, name) VALUES
 
 ---
 
-## 🛡️ 3 Katmanlı Güvenlik
+## 3 Katmanlı Güvenlik
 
 ### 1. UI Katmanı (Flutter)
 

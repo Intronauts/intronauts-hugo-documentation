@@ -3,7 +3,7 @@ title: "Figma Tasarımları"
 weight: 70
 ---
 
-# 🎨 Figma Tasarım Dokümantasyonu
+# Figma Tasarım Dokümantasyonu
 
 Bu bölümde projenin mobil uygulama tasarımlarını bulabilirsiniz.
 
@@ -13,9 +13,9 @@ _Son güncelleme: 10 Ekim 2025_
 
 ---
 
-## 📱 Tasarım Kategorileri
+## Tasarım Kategorileri
 
-### 1. 🆕 Yeni Ekranlar (New)
+### 1. Yeni Ekranlar (New)
 
 En son eklenen ve tasarlanan ekranlar:
 
@@ -25,7 +25,7 @@ En son eklenen ve tasarlanan ekranlar:
 
 [Yeni Ekranları Görüntüle](/images/teacher_mobile_figma_design/new/)
 
-### 2. 🔧 Düzeltilen Ekranlar (Fix)
+### 2. Düzeltilen Ekranlar (Fix)
 
 Güncellenen ve iyileştirilen ekranlar:
 
@@ -35,7 +35,7 @@ Güncellenen ve iyileştirilen ekranlar:
 
 [Düzeltilen Ekranları Görüntüle](/images/teacher_mobile_figma_design/fix/)
 
-### 3. ✅ Tamamlanan Ekranlar (End)
+### 3. Tamamlanan Ekranlar (End)
 
 Final tasarımları ve tamamlanmış ekranlar:
 
@@ -81,7 +81,7 @@ Final tasarımları ve tamamlanmış ekranlar:
 
 ---
 
-## 🎯 Tasarım Özellikleri
+## Tasarım Özellikleri
 
 ### UI/UX Prensipleri
 - **Material Design 3** standartlarına uygun
@@ -103,17 +103,17 @@ Final tasarımları ve tamamlanmış ekranlar:
 
 ---
 
-## 📂 Ekran Listesi ve Kategoriler
+## Ekran Listesi ve Kategoriler
 
-### 🔐 Authentication (Kimlik Doğrulama)
+### Authentication (Kimlik Doğrulama)
 1. Login - 1
 2. Sign Up - 2
 3. Loading Page - 3
 
-### 🏠 Ana Sayfa
+### Ana Sayfa
 4. Dashboard - 4
 
-### 📚 Sınıf Yönetimi
+### Sınıf Yönetimi
 5. Class - 5
 6. Class - Create Class - 5.1
 7. Class - Create Class - 5.2
@@ -128,7 +128,7 @@ Final tasarımları ve tamamlanmış ekranlar:
 16. Class Detail - Class Detail - Edit Class - 5.4.1
 17. Class Detail - Class Detail - 5.4.4
 
-### 📝 Sınav Yönetimi
+### Sınav Yönetimi
 18. Exams - 6
 19. Exams - Filter Popup - 6.1
 20. Exams - Create Exam - 6.1.1
@@ -144,26 +144,26 @@ Final tasarımları ve tamamlanmış ekranlar:
 30. Exams - Detail - 6.3.4.3 (NEW)
 31. Exams - Detail - 6.3.4.4 (NEW)
 
-### 👤 Profil
+### Profil
 32. Profile - 7
 
-### 🤖 OCR
+### OCR
 33. Exams - Read OCR - 8
 
 ---
 
-## 🔄 Değişiklik Geçmişi
+## Değişiklik Geçmişi
 
 ### 10 Ekim 2025
-- ✅ Dashboard ekranı güncellendi
-- ✅ Sınıf detay ekranı düzenlendi
-- ✅ Sınav popup ekranı iyileştirildi
-- 🆕 5 yeni öğrenci profil ekranı eklendi
-- 🆕 5 yeni sınav detay ekranı eklendi
+- Dashboard ekranı güncellendi
+- Sınıf detay ekranı düzenlendi
+- Sınav popup ekranı iyileştirildi
+- 5 yeni öğrenci profil ekranı eklendi
+- 5 yeni sınav detay ekranı eklendi
 
 ---
 
-## 📥 Tasarım Dosyalarına Erişim
+## Tasarım Dosyalarına Erişim
 
 Tasarım görselleri `/static/images/teacher_mobile_figma_design/` dizininde bulunmaktadır:
 
@@ -173,7 +173,7 @@ Tasarım görselleri `/static/images/teacher_mobile_figma_design/` dizininde bul
 
 ---
 
-## 💡 Notlar
+## Notlar
 
 - Tüm ekranlar **1080x2400** çözünürlükte tasarlanmıştır
 - Tasarımlar **Flutter** ile implementasyon için optimize edilmiştir
@@ -182,7 +182,7 @@ Tasarım görselleri `/static/images/teacher_mobile_figma_design/` dizininde bul
 
 ---
 
-## 📞 İletişim
+## İletişim
 
 Tasarım ile ilgili sorularınız için:
 - **Tasarımcı**: Mehmet Ali GÜMÜŞLER

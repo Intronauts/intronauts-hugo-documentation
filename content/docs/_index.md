@@ -5,7 +5,7 @@ bookFlatSection: false
 bookCollapseSection: false
 ---
 
-# 🎓 Okula Bukula Dokümantasyonu
+# Okula Bukula Dokümantasyonu
 
 **Yapay Zekâ Destekli Sınav Değerlendirme Platformu**
 
@@ -13,50 +13,50 @@ Hoş geldiniz! Bu dokümantasyon, Okula Bukula projesinin tüm teknik detayları
 
 ---
 
-## 📚 Dokümantasyon Bölümleri
+## Dokümantasyon Bölümleri
 
-### 🎯 [Proje Hakkında](/docs/proje-hakkinda/)
+### [Proje Hakkında](/docs/proje-hakkinda/)
 Projenin genel tanıtımı, özellikleri ve sistem bileşenleri hakkında detaylı bilgi.
 
-### 🗄️ [Veritabanı](/docs/database/)
+### [Veritabanı](/docs/database/)
 - Multi-tenant veritabanı yapısı
 - 12 tablo şeması ve ilişkiler
 - SQL migration dosyaları
 - Performans optimizasyonları
 
-### 🔧 [Supabase Kurulumu](/docs/supabase-setup/)
+### [Supabase Kurulumu](/docs/supabase-setup/)
 - Adım adım kurulum rehberi
 - Auth entegrasyonu
 - Storage yapılandırması
 - API endpoint'leri
 
-### 💻 [Teknik Dokümantasyon](/docs/technical/)
+### [Teknik Dokümantasyon](/docs/technical/)
 - Authentication sistemi
 - Flutter implementasyonu
 - Supabase entegrasyonu
 
-### 📖 [Rehberler](/docs/guides/)
+### [Rehberler](/docs/guides/)
 - Implementasyon rehberleri
 - Özellik geliştirme adımları
 - Best practices
 
-### 🔒 [Güvenlik ve Referans](/docs/reference/)
+### [Güvenlik ve Referans](/docs/reference/)
 - RBAC güvenlik sistemi
 - Rol ve izin yönetimi
 - Changelog ve versiyon geçmişi
 
-### 🌐 [API Dokümantasyonu](/docs/api/)
+### [API Dokümantasyonu](/docs/api/)
 - REST API kullanım rehberi
 - Endpoint'ler ve örnekler
 
-### 🎨 [Figma Tasarımları](/docs/figma-tasarimlar/)
+### [Figma Tasarımları](/docs/figma-tasarimlar/)
 - Mobil uygulama tasarımları
 - UI/UX ekranları
 - Tasarım güncellemeleri
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## Hızlı Başlangıç
 
 ### 1. Veritabanını Kurun
 ```bash
@@ -86,7 +86,7 @@ Sol menüden istediğiniz bölüme gidin ve detaylı bilgi alın.
 
 ---
 
-## 🧩 Sistem Bileşenleri
+## Sistem Bileşenleri
 
 | Teknoloji | Kullanım Alanı |
 |-----------|----------------|
@@ -99,44 +99,44 @@ Sol menüden istediğiniz bölüme gidin ve detaylı bilgi alın.
 
 ---
 
-## 📖 Dokümantasyon Özellikleri
+## Dokümantasyon Özellikleri
 
-- 🌓 **Açık/Koyu Tema**: Otomatik veya manuel tema seçimi
-- 🔍 **Yerleşik Arama**: Tüm dokümantasyonda hızlı arama
-- 📱 **Mobil Uyumlu**: Responsive tasarım
-- ⚡ **Hızlı Yükleme**: Optimize edilmiş sayfa performansı
-- 📝 **Markdown Desteği**: Kolay içerik yönetimi
-- 🔗 **Kolay Navigasyon**: Sol menü ve içindekiler tablosu
+- **Açık/Koyu Tema**: Otomatik veya manuel tema seçimi
+- **Yerleşik Arama**: Tüm dokümantasyonda hızlı arama
+- **Mobil Uyumlu**: Responsive tasarım
+- **Hızlı Yükleme**: Optimize edilmiş sayfa performansı
+- **Markdown Desteği**: Kolay içerik yönetimi
+- **Kolay Navigasyon**: Sol menü ve içindekiler tablosu
 
 ---
 
-## 👥 Roller ve Yetkiler
+## Roller ve Yetkiler
 
-### 👩‍🏫 Öğretmen
+### Öğretmen
 - Sınıf oluşturma ve yönetimi
 - AI destekli sınav hazırlama
 - Otomatik değerlendirme ve onay
 - Öğrenci performans takibi
 
-### 🧑‍🎓 Öğrenci
+### Öğrenci
 - Sınıf kodları ile katılım
 - Sınav sonuçlarını görüntüleme
 - Kişisel gelişim takibi
 - AI geri bildirimlerini inceleme
 
-### 👨‍💼 Editör/Gözetmen
+### Editör/Gözetmen
 - Kurumsal analiz ve raporlama
 - Okul geneli performans takibi
 - Denetim ve izleme
 
-### 👑 Admin
+### Admin
 - Tam sistem yönetimi
 - Kullanıcı ve rol yönetimi
 - Güvenlik yapılandırması
 
 ---
 
-## 📞 Destek ve Katkı
+## Destek ve Katkı
 
 Sorularınız veya katkılarınız için:
 - **GitHub**: [Intronauts/intronauts-hugo-documentation](https://github.com/Intronauts/intronauts-hugo-documentation)
@@ -145,7 +145,7 @@ Sorularınız veya katkılarınız için:
 
 ---
 
-## 📜 Lisans
+## Lisans
 
 Bu proje Mehmet Ali GÜMÜŞLER tarafından hazırlanmıştır.  
 Kişisel ve eğitimsel kullanım içindir.  

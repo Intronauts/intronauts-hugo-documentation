@@ -4,29 +4,29 @@ weight: 13
 bookCollapseSection: true
 ---
 
-# 🔧 Supabase Detaylı Dokümantasyon
+# Supabase Detaylı Dokümantasyon
 
 Bu bölümde Supabase veritabanında kullanılan fonksiyonlar, trigger'lar ve RLS (Row Level Security) politikalarının detaylı açıklamaları bulunmaktadır.
 
 ---
 
-## 📚 İçerik
+## İçerik
 
-### [📦 Fonksiyonlar](/docs/supabase/functions/)
+### [Fonksiyonlar](/docs/supabase/functions/)
 Veritabanında kullanılan tüm PostgreSQL fonksiyonlarının detaylı açıklamaları:
 - Sınıf kodu üretici fonksiyonları
 - Auth entegrasyon fonksiyonları
 - RPC fonksiyonları
 - Yardımcı fonksiyonlar
 
-### [⚡ Trigger'lar](/docs/supabase/triggers/)
+### [Trigger'lar](/docs/supabase/triggers/)
 Otomatik çalışan trigger sistemlerinin dokümantasyonu:
 - Timestamp güncelleme trigger'ları
 - Auth kullanıcı oluşturma trigger'ı
 - Sınıf kodu atama trigger'ı
 - Veri doğrulama trigger'ları
 
-### [🔒 RLS Politikaları](/docs/supabase/rls-policies/)
+### [RLS Politikaları](/docs/supabase/rls-policies/)
 Row Level Security politikalarının tam listesi ve açıklamaları:
 - Users tablosu politikaları
 - Classes tablosu politikaları
@@ -35,13 +35,13 @@ Row Level Security politikalarının tam listesi ve açıklamaları:
 
 ---
 
-## 🎯 Amaç
+## Amaç
 
 Bu dokümantasyon, Supabase veritabanındaki tüm backend mantığını anlamak ve yönetmek için hazırlanmıştır. Her fonksiyon, trigger ve politika detaylı olarak açıklanmıştır.
 
 ---
 
-## 📖 Nasıl Kullanılır
+## Nasıl Kullanılır
 
 1. İlgili kategoriye gidin (Fonksiyonlar, Trigger'lar, RLS Politikaları)
 2. Detaylı açıklamaları okuyun

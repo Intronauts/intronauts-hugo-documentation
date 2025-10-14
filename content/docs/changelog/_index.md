@@ -4,34 +4,38 @@ weight: 60
 bookCollapseSection: true
 ---
 
-# 📋 Değişiklik Geçmişi (Changelog)
+# Değişiklik Geçmişi (Changelog)
 
 Bu bölümde projeye yapılan tüm değişikliklerin detaylı kayıtları bulunmaktadır.
 
 ---
 
-## 📅 Son Değişiklikler
+# Son Değişiklikler
 
+- [14 Ekim 2025 - Flutter Uygulama Refactoring](/docs/changelog/14-10-2025-flutter-refactor/)
 - [14 Ekim 2025 - Sınıf Yönetimi İyileştirmeleri](/docs/changelog/2025-10-14/)
 - [12 Ekim 2025 - Sınıf Oluşturma API Entegrasyonu](/docs/changelog/12-10-2025/)
 - [Tüm Geçmiş](/docs/changelog/gecmis/)
 
 ---
 
-## 📊 Özet Bilgiler
+# Özet Bilgiler
 
-### Son Güncelleme
+###  Son Güncelleme
+**14 Ekim 2025** - Flutter mobil uygulama refactoring tamamlandı
+
+###  Backend Güncellemesi
 **14 Ekim 2025** - Sınıf sekmesi hataları düzeltildi, RLS politikaları iyileştirildi
 
-### Son Özellik
+###  Son Özellik
 **12 Ekim 2025** - Supabase REST API ile sınıf oluşturma özelliği eklendi
 
-### Toplam Versiyon
+###  Toplam Versiyon
 **v1.3.0** - Stabil sürüm
 
 ---
 
-## 🎯 Değişiklik Kategorileri
+# Değişiklik Kategorileri
 
 - **Eklenen** (Added) - Yeni özellikler
 - **Değiştirilen** (Changed) - Mevcut özelliklerde değişiklikler
@@ -41,7 +45,7 @@ Bu bölümde projeye yapılan tüm değişikliklerin detaylı kayıtları bulunm
 
 ---
 
-## 📖 Changelog Formatı
+# Changelog Formatı
 
 Bu proje [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) formatını takip eder ve [Semantic Versioning](https://semver.org/) kullanır.
 
