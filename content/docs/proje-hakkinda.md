@@ -4,18 +4,12 @@ weight: 5
 bookFlatSection: false
 ---
 
-# Okula Bukula: Yapay Zekâ Destekli Sınav Değerlendirme Platformu
+# Intronauts: Yapay Zekâ Destekli Sınav Değerlendirme Platformu
 
-**Author:** Mehmet Ali GÜMÜŞLER  
-**Repository:** `project_design`  
-**Date:** 2025-10-10  
-**Version:** v3.3 (Final Extended - Multi-Tenant, Auth Integration, Performance)
-
----
 
 ## Proje Hakkında
 
-Okula Bukula, öğretmenlerin sınav kağıtlarını otomatik olarak **oluşturup değerlendirmesini** sağlayan yapay zekâ destekli bir eğitim platformudur.
+Intronauts, öğretmenlerin sınav kağıtlarını otomatik olarak **oluşturup değerlendirmesini** sağlayan yapay zekâ destekli bir eğitim platformudur.
 
 Sistem, OCR (Optik Karakter Tanıma) ve LLM (Büyük Dil Modelleri) teknolojilerini bir araya getirerek:
 - **Multi-Tenant Okul Yönetimi**: Her okul kendi verilerini güvenle yönetir
@@ -112,15 +106,3 @@ Platform dört ana rolden oluşur: **Admin**, **Öğretmen**, **Öğrenci** ve *
 - Sistem ayarlarını yapılandırabilir
 
 ---
-
-## Gelecek Planları
-
-- **RLS Politikaları Genişletme**: Tüm tablolar için detaylı güvenlik politikaları
-- **API Endpoint'leri Genişletme**: Tüm sistem işlemleri için hazır HTTP çağrıları
-- **Flutter Uygulaması**: Supabase entegrasyonu ve mobil deneyim
-- **Türkçe OCR Modeli**: Türkçe el yazısı için özel OCR modeli geliştirilmesi
-- **Gelişmiş Analitik**: Öğrenci gelişim analitiği ve tahmine dayalı modeller
-- **On-Premise Seçenek**: Veri gizliliği için kurumlara özel kurulum
-- **AI Kişiselleştirme**: Öğretmen sınav stiline göre AI Exam Builder
-- **LMS Entegrasyonu**: Mevcut Öğrenme Yönetim Sistemleri ile entegrasyon
-- **Mobil Uygulama**: iOS ve Android uygulamaları

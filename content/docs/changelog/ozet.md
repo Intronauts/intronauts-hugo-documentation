@@ -5,44 +5,43 @@ weight: 1
 
 # Değişiklik Özeti
 
-> Bu dosya günlük değişikliklerin özetini içermektedir.  
+> Bu dosya en son yapılan değişikliklerin özetini içermektedir.  
 > Tam geçmiş için: [Tüm Geçmiş](/docs/changelog/gecmis/)
 
 ---
 
-# Özet
+# Son Özet
 
-Bugün (14 Ekim 2025) yapılan değişiklikler:
+Son İki Hafta (17-19 Ekim 2025) yapılan değişiklikler:
 
-###  Düzeltilen Sorunlar
-1. ✅ Öğrenci FAB butonu kayboluyor sorunu
-2. ✅ Sınıf detaylarında statik veri sorunu
-3. ✅ RLS policy circular dependency sorunu
-4. ✅ Öğrenci listesi görünmeme sorunu
+###  Proje Reorganizasyonu (19 Ekim 2025)
+1. ✅ Öğretmen sayfaları 4 kategoriye ayrıldı (class, exams, home, profile)
+2. ✅ 20 dosya taşınması başarıyla tamamlandı
+3. ✅ Tüm import yolları güncellendi
+4. ✅ Yedek dosya temizliği yapıldı
 
-###  Yeni Özellikler
-1. ✅ `get_class_student_count` RPC fonksiyonu
-2. ✅ `get_class_students` RPC fonksiyonu
-3. ✅ MainLayout FAB özelleştirmesi
-4. ✅ ClassCard studentCount parametresi
+###  Sınıf Yönetimi Geliştirmeleri (17 Ekim 2025)
+1. ✅ Sınıf güncelleme işlevi tamamlandı
+2. ✅ Sınıf silme işlevi operasyonel hale getirildi
+3. ✅ Dialog state management optimize edildi
+4. ✅ Context yönetimi problemleri çözüldü
 
 ###  Teknik İyileştirmeler
-- RLS bypass için SECURITY DEFINER kullanımı
-- Performance iyileştirmeleri (%50+ hız artışı)
-- Backward compatible değişiklikler
+- Kod organizasyonu ve yapı iyileştirildi
+- Error handling kapsamlı hale getirildi
+- User experience optimizasyonları yapıldı
+- RLS politikaları doğrulandı
 
 ---
 
-**Detaylı Bilgi İçin:**
-- [Changelog](./documentation/reference/06_changelog.md#130---2025-10-14)
-- [Troubleshooting](./documentation/reference/04_troubleshooting.md)
-- [Implementation Guide](./documentation/guides/02_implementation_guide.md)
+**Detaylı Bilgiler İçin:**
+- [19 Ekim 2025 - Öğretmen Sayfaları Reorganizasyonu](/docs/changelog/19-10-2025/)
+- [17 Ekim 2025 - Sınıf Yönetimi Geliştirmeleri](/docs/changelog/17-10-2025/)
+- [Tüm Geçmiş](/docs/changelog/gecmis/)
 
 ---
 
-# Orijinal Değişiklik Raporu
+# Eski Özet Bilgileri
 
-Aşağıda bugün yapılan tüm değişikliklerin detaylı raporu bulunmaktadır:
-
----
+Daha eski güncellemeler için geçmiş belgelerine bakınız.
 

@@ -60,37 +60,8 @@ Bu proje GitHub Actions ile otomatik olarak GitHub Pages'e deploy edilir.
 ### Otomatik Deployment
 - Her `main` branch'e push edildiğinde otomatik olarak build ve deploy edilir
 - GitHub Actions workflow: `.github/workflows/deploy.yml`
-- Ortalama build süresi: 1-2 dakika
 
-### Deployment Adımları
 
-1. **GitHub Repository Ayarları:**
-   - Settings > Pages > Source: **GitHub Actions** seçin
-
-2. **Kod Push Edin:**
-```bash
-git add .
-git commit -m "Your commit message"
-git push
-```
-
-3. **Deployment İzleyin:**
-   - GitHub repository'nizde **Actions** sekmesine gidin
-   - "Deploy Hugo site to GitHub Pages" workflow'unu görüntüleyin
-
-Detaylı talimatlar için: `.github/workflows/deploy-instructions.md`
-
----
-
-## Üretim Build'i
-
-```bash
-hugo
-```
-
-Build dosyaları `public/` klasöründe oluşturulacaktır.
-
----
 
 ## Yeni İçerik Ekleme
 
@@ -120,8 +91,6 @@ intronauts-hugo-documentation/
 │   ├── docs/
 │   │   ├── _index.md                    # Ana dokümantasyon sayfası
 │   │   ├── proje-hakkinda.md            # Proje tanıtımı
-│   │   ├── kurulum.md                   # Kurulum rehberi
-│   │   ├── icerik-olusturma.md          # İçerik oluşturma kılavuzu
 │   │   ├── supabase-setup.md            # Supabase kurulum rehberi
 │   │   ├── figma-tasarimlar.md          # Figma tasarım dokümantasyonu
 │   │   │
@@ -136,20 +105,29 @@ intronauts-hugo-documentation/
 │   │   │       ├── 5-class_code_generator.sql
 │   │   │       └── Remote_DB_Schema.sql
 │   │   │
+│   │   ├── supabase/                    # Supabase kurulum ve konfigürasyon
+│   │   │   └── _index.md               # Supabase ana sayfa
+│   │   │
 │   │   ├── technical/                   # Teknik dokümantasyon
 │   │   │   └── 02_supabase_auth_integration.md
 │   │   │
-│   │   ├── guides/                      # Rehberler
-│   │   │   └── implementation_guide.md
+│   │   ├── guides/                      # Geliştirme Rehberleri
+│   │   │   ├── _index.md               # Rehberler ana sayfa
+│   │   │   ├── Dosya-Rehberi.md        # Dosya yapısı rehberi
+│   │   │   ├── implementation_guide.md  # Implementation rehberi
+│   │   │   └── rest_api_guide_1.md     # REST API rehberi
 │   │   │
 │   │   ├── reference/                   # Referans dokümantasyonu
-│   │   │   ├── 01_rbac_security.md
-│   │   │   ├── 06_changelog.md
-│   │   │   ├── CHANGELOG_2025-10-14.md
-│   │   │   └── CHANGELOG_SUMMARY_2025-10-14.md
+│   │   │   └── 01_rbac_security.md     # RBAC güvenlik sistemi
 │   │   │
-│   │   └── api/                         # API dokümantasyonu
-│   │       └── rest_api_guide_1.md
+│   │   └── changelog/                   # Değişiklik kayıtları
+│   │       ├── _index.md               # Changelog ana sayfa
+│   │       ├── ozet.md                 # Değişiklik özeti
+│   │       ├── gecmis.md               # Geçmiş değişiklikler
+│   │       ├── 12-10-2025.md           # 12 Ekim 2025 güncellemeleri
+│   │       ├── 14-10-2025.md           # 14 Ekim 2025 güncellemeleri
+│   │       ├── 17-10-2025.md           # 17 Ekim 2025 güncellemeleri
+│   │       └── 19-10-2025.md           # 19 Ekim 2025 güncellemeleri
 │   │
 │   └── _index.md                        # Site ana sayfası
 │
@@ -250,75 +228,3 @@ Bu proje [Hugo Book](https://github.com/alex-shpak/hugo-book) temasını kullanm
 
 ---
 
-## 🧱 Proje Teknolojileri
-
-| Teknoloji | Kullanım Alanı |
-|-----------|----------------|
-| **Hugo** | Static site generator |
-| **Hugo Book Theme** | Dokümantasyon teması |
-| **Markdown** | İçerik formatı |
-| **Git** | Versiyon kontrolü |
-| **PostgreSQL (Supabase)** | Proje veritabanı |
-| **Flutter** | Proje mobil uygulaması |
-
----
-
-## 🤝 Katkıda Bulunma
-
-1. **Fork** edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'feat: Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. **Pull Request** açın
-
-### Katkı Kuralları
-- Markdown formatına uyun
-- Her sayfaya uygun front matter ekleyin
-- Görselleri `static/images/` klasörüne ekleyin
-- Değişikliklerinizi test edin (`hugo server -D`)
-
----
-
-## 📜 Lisans
-
-Bu proje Mehmet Ali GÜMÜŞLER tarafından hazırlanmıştır.  
-Kişisel ve eğitimsel kullanım içindir.  
-© 2025 Mehmet Ali GÜMÜŞLER
-
----
-
-## 📞 İletişim ve Destek
-
-- **GitHub Repository**: [Intronauts/intronauts-hugo-documentation](https://github.com/Intronauts/intronauts-hugo-documentation)
-- **Proje**: Okula Bukula - AI Exam Evaluation System
-- **Yazar**: Mehmet Ali GÜMÜŞLER
-- **Versiyon**: v3.3 (Final Extended)
-- **Tarih**: 14 Ekim 2025
-
----
-
-## 🔄 Güncelleme Geçmişi
-
-### v1.0.0 (14 Ekim 2025)
-- ✅ Hugo Book teması entegrasyonu
-- ✅ Veritabanı dokümantasyonu eklendi
-- ✅ Supabase kurulum rehberi eklendi
-- ✅ Supabase detaylı dokümantasyonu (Functions, Triggers, RLS Policies)
-- ✅ Authentication sistemi dokümante edildi
-- ✅ Implementation rehberleri eklendi
-- ✅ RBAC güvenlik dokümantasyonu
-- ✅ API dokümantasyonu
-- ✅ Figma tasarım dokümantasyonu (33 ekran)
-- ✅ Changelog ve versiyon geçmişi (yeni klasör yapısı)
-- ✅ SQL migration dosyaları
-- ✅ GitHub Pages deployment (GitHub Actions)
-
----
-
-## 🏗️ Build Status
-
-[![Deploy Status](https://github.com/Intronauts/intronauts-hugo-documentation/actions/workflows/deploy.yml/badge.svg)](https://github.com/Intronauts/intronauts-hugo-documentation/actions/workflows/deploy.yml)
-
----
-
-**Happy Documenting! 🚀**

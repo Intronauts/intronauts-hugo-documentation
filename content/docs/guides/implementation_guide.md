@@ -3,10 +3,9 @@ title: "Implementation Rehberi"
 weight: 35
 ---
 
-# 📘 Implementasyon Rehberi - Sınıfa Katılma Özelliği
+# 📘 Implementasyon Rehberi 
 
-> **Kapsamlı Geliştirme Rehberi**  
-> Bu dokümanda sınıfa katılma özelliğinin baştan sona implementasyonu adım adım anlatılmaktadır.
+> Bu dokümanda ornek bir sınıfa katılma özelliğinin baştan sona implementasyonu adım adım anlatılmaktadır.
 
 ---
 

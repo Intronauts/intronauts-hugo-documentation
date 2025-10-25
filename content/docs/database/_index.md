@@ -1,243 +1,343 @@
 ---
-title: "Veritabanı Tasarımı"
+title: "Veritabanı Dokümantasyonu"
 weight: 10
 bookCollapseSection: true
 ---
 
-# AI Sınav Değerlendirme Sistemi - Veritabanı Tasarımı
+# Veritabanı Yapısı
 
-**Author:** Mehmet Ali GÜMÜŞLER  
-**Version:** 3.3 (Final Extended - Soft Delete, Performance Indexes, Auto Triggers)  
-**Tarih:** 10 Ekim 2025
+Okula Bukula sistemi, **PostgreSQL** veritabanı üzerinde multi-tenant (okul bazlı) mimari ile çalışır. Her okul kendi verilerine izole şekilde erişir.
 
 ---
 
-## Proje Hakkında
+## 📊 Genel Bakış
 
-Bu proje, AI destekli sınav değerlendirme sistemi için geliştirilmiş kapsamlı ilişkisel veritabanı yapısını içerir.  
-Sistem, öğretmenlerin sınav oluşturması, cevap anahtarlarını yüklemesi ve yapay zekâ ile öğrenci sınav kâğıtlarını otomatik olarak değerlendirmesine olanak tanır.  
-Öğrenciler ise notlarını, sınav kağıtlarını, detaylı geri bildirimleri ve gelişim analizlerini görüntüleyebilir.
+Veritabanı **12 ana tablo** içerir ve 4 kategoriye ayrılır:
 
----
-
-## Veritabanı Şeması
-
-### Okul ve Kurum Yönetimi
-
-| Tablo | Açıklama |
-|-------|-----------|
-| **schools** | Multi-tenant yapı için okul/kurum bilgileri |
-
-### Kullanıcı ve Yetki Yönetimi
-
-| Tablo | Açıklama |
-|-------|-----------|
-| **users** | Öğretmen ve öğrencilerin temel bilgileri (okul bazlı) |
-| **roles** | Sistem rolleri (Admin, Öğretmen, Öğrenci, Editör) |
-| **permissions** | Detaylı sistem izinleri (46 farklı yetki) |
-| **role_permissions** | Roller ve izinler arasındaki ilişki |
-
-### Sınıf ve Müfredat Yönetimi
-
-| Tablo | Açıklama |
-|-------|-----------|
-| **classes** | Öğretmen tarafından oluşturulan sınıflar (okul bazlı) |
-| **class_members** | Öğrencilerin sınıflara katılım kayıtları (soft delete destekli) |
-| **syllabi** | Sınıf müfredatları (PDF/Word dosyaları) |
-| **syllabus_topics** | Müfredat konu başlıkları (hiyerarşik yapı) |
-
-### Sınav ve Değerlendirme Yönetimi
-
-| Tablo | Açıklama |
-|-------|-----------|
-| **exams** | Sınav bilgileri, içerik ve cevap anahtarları |
-| **exam_questions** | Sınav soruları ve müfredat konularına bağlantı |
-| **student_papers** | Öğrenci sınav kağıtları, AI puanları, geri bildirim |
-| **student_paper_files** | Sınav kağıdı sayfa görüntüleri ve OCR çıktıları (benzersiz sayfa numarası) |
+1. **Okul Yönetimi** - Kurumsal yapı
+2. **Kullanıcı ve Yetki Yönetimi** - Kimlik doğrulama ve roller
+3. **Sınıf ve Müfredat** - Eğitim organizasyonu
+4. **Sınav ve Değerlendirme** - AI destekli değerlendirme sistemi
 
 ---
 
-## Diyagram Görünümü
+## 🏫 1. Okul Yönetimi
 
-Veritabanı diyagramı, dbdiagram.io üzerinden tasarlanmıştır.
+### `schools` Tablosu
+Multi-tenant yapının temeli. Her kayıt bir okulu/kurumu temsil eder.
 
-![Database Diagram](/images/schema.png)
+**Amaç:** Farklı okulların verilerini birbirinden izole etmek.
 
----
-
-## Sistem Özellikleri
-
-### Multi-Tenant Okul Yapısı:
-- **Okul Bazlı İzolasyon**: Her okul kendi verilerini görür, diğer okullardan izole
-- **Okul Numarası Benzersizliği**: Öğrenci numaraları okul içinde benzersiz
-- **Kurumsal Güvenlik**: Veriler okul bazlı ayrılmış, güvenlik sağlanmış
-
-### Öğretmen:
-- **Sınıf Yönetimi**: Kendi okulunda sınıf oluşturur, öğrencileri davet kodu ile ekler
-- **Müfredat Yönetimi**: Syllabus dosyalarını yükler, konu başlıklarını organize eder
-- **Sınav Oluşturma**: AI destekli sınav editörü ile soru hazırlar
-- **Değerlendirme**: AI puanlarını inceler, manuel düzenlemeler yapar
-- **Raporlama**: Sınıf ve öğrenci bazında analiz görüntüler
-
-### Öğrenci:
-- **Sınıfa Katılım**: Davet kodu ile sınıfa katılır
-- **Sonuç Görüntüleme**: Sadece kendi sınav sonuçlarını, geri bildirimleri inceler
-- **Gelişim Takibi**: Kişisel gelişim grafiği ve konu bazlı analiz görür
-
-### Editör/Gözetmen:
-- **Kurumsal Görüntüleme**: Okuldaki tüm sınıfları, sınavları ve sonuçları görüntüler
-- **Sadece Okuma Yetkisi**: Veri değiştirme yetkisi yok, sadece analiz ve raporlama
-
-### Admin:
-- **Tam Yetki**: Sistemdeki tüm işlemleri yapabilir
-- **Kullanıcı Yönetimi**: Tüm kullanıcıları yönetebilir
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `id` | int | Okul ID (Primary Key) |
+| `name` | varchar(255) | Okul adı (benzersiz) |
+| `address` | text | Okul adresi |
+| `created_at` | timestamptz | Kayıt tarihi |
 
 ---
 
-## AI ve Veri Yapısı
+## 👥 2. Kullanıcı ve Yetki Yönetimi
 
-### **AI Entegrasyonu:**
-- **OCR Modülü**: El yazısı sınav kağıtlarını dijital metne çevirir
-- **LLM Modülü**: Açık uçlu soruları değerlendirir, geri bildirim üretir
-- **JSONB Veri Yapısı**: AI çıktıları ve model parametreleri esnek formatta saklanır
+### `users` Tablosu
+Sistemdeki tüm kullanıcılar (öğrenci, öğretmen, admin).
 
-### **Veri Durumları:**
-- **exam_status**: draft, published, archived
-- **paper_status**: pending, identifying, needs_identification, evaluated, published
+**Amaç:** Kullanıcı bilgilerini saklamak ve Supabase Auth ile entegre etmek.
 
-### **Özel Özellikler:**
-- **Multi-Tenant Yapı**: Okul bazlı veri izolasyonu ve güvenlik
-- **Supabase Auth Entegrasyonu**: `auth_user_id` ile Supabase kimlik doğrulama sistemi
-- **Detaylı Yetki Sistemi**: 46 farklı izin ile granüler yetki kontrolü
-- **Soft Delete**: Sınıf üyeliklerinde yumuşak silme (`deleted_at` kolonu)
-- **Performans İndeksleri**: Sık sorgulanan alanlar için optimize edilmiş indeksler
-- **Otomatik Timestamp**: `updated_at` alanları otomatik güncelleme triggerları ile
-- **Hiyerarşik Konu Yapısı**: Müfredat konuları parent-child ilişkisi ile organize edilir
-- **Çoklu Sayfa Desteği**: Sınav kağıtları sayfa sayfa saklanır ve işlenir
-- **Esnek Cevap Anahtarı**: JSONB formatında farklı soru tiplerini destekler
-- **Sınıf Kodu Üreticisi**: Otomatik benzersiz 8 karakterlik sınıf kodları
-- **API Endpoint'leri**: Hazır HTTP çağrıları (auth, sınıf oluşturma)
-- **RLS Politikaları**: Row Level Security ile veri güvenliği
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `id` | int | Kullanıcı ID |
+| `school_id` | int | Bağlı olduğu okul |
+| `name` | varchar(100) | Ad Soyad |
+| `email` | varchar(150) | E-posta (benzersiz) |
+| `school_number` | varchar(50) | Öğrenci numarası |
+| `phone_number` | varchar(20) | Telefon |
+| `birth_date` | date | Doğum tarihi |
+| `role_id` | int | Kullanıcı rolü |
+| `auth_user_id` | uuid | Supabase Auth UUID |
 
----
+**Önemli:** `(school_id, school_number)` birlikte benzersizdir - aynı numara farklı okullarda kullanılabilir.
 
-## 🚀 Performans ve Optimizasyon Özellikleri
+### `roles` Tablosu
+Sistem rolleri.
 
-### 📊 Performans İndeksleri:
-- **`idx_exams_status`**: Sınav durumuna göre hızlı filtreleme
-- **`idx_student_papers_status`**: Kağıt durumuna göre hızlı filtreleme  
-- **`idx_exam_questions_topic_id`**: Konu bazlı soru sorguları
-- **`idx_unique_active_class_member`**: Soft delete destekli benzersiz üyelik kontrolü
+**Varsayılan Roller:**
+1. **Student (1)** - Öğrenci
+2. **Teacher (2)** - Öğretmen  
+3. **Admin (3)** - Sistem yöneticisi
+4. **Editor (4)** - İçerik editörü
 
-### 🔄 Otomatik Güncelleme Sistemi:
-- **`set_updated_at()` Fonksiyonu**: Tüm `updated_at` alanlarını otomatik günceller
-- **Trigger Sistemi**: `users`, `classes`, `exams`, `student_papers` tablolarında otomatik çalışır
-- **Idempotent Yapı**: Birden fazla çalıştırmada güvenli
+### `permissions` Tablosu
+Detaylı izinler (46 farklı yetki).
 
-### 🗑️ Soft Delete Desteği:
-- **`class_members.deleted_at`**: Sınıf üyeliklerinde yumuşak silme
-- **Partial Index**: Sadece aktif üyeler için benzersizlik kontrolü
-- **Veri Korunması**: Silinen kayıtlar fiziksel olarak korunur
+**Örnek İzinler:**
+- `create_class` - Sınıf oluşturma
+- `view_all_exams` - Tüm sınavları görüntüleme
+- `grade_papers` - Kağıt değerlendirme
+
+### `role_permissions` Tablosu
+Roller ve izinler arasındaki ilişki (Many-to-Many).
 
 ---
 
-## 🧱 Kullanılan Teknolojiler
+## 🎓 3. Sınıf ve Müfredat Yönetimi
 
-| Bileşen | Açıklama |
-|----------|-----------|
-| **Supabase** | PostgreSQL tabanlı veritabanı ve auth sistemi |
-| **PostgreSQL** | Veritabanı yönetim sistemi |
-| **DBML** | Modelleme dili (dbdiagram.io) |
-| **SQL Migrations** | Sürüm kontrollü veritabanı güncellemeleri |
-| **JSONB** | AI çıktıları, cevap anahtarları ve esnek veri saklama |
-| **ENUM Types** | Veri bütünlüğü için durum kontrolleri |
-| **Multi-Tenant** | Okul bazlı veri izolasyonu |
-| **Soft Delete** | Yumuşak silme ile veri korunması |
-| **Performance Indexes** | Sorgu performansı için optimize edilmiş indeksler |
-| **Auto Triggers** | Otomatik timestamp güncellemeleri |
-| **Class Code Generator** | Otomatik sınıf kodu üretimi |
-| **API Endpoints** | Hazır HTTP çağrıları |
-| **RLS Policies** | Row Level Security politikaları |
+### `classes` Tablosu
+Öğretmenlerin oluşturduğu sınıflar.
 
----
+**Amaç:** Öğrencileri gruplamak ve sınav organizasyonu sağlamak.
 
-## ⚙️ Kurulum (Supabase/PostgreSQL)
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `id` | int | Sınıf ID |
+| `school_id` | int | Sınıfın bağlı olduğu okul |
+| `teacher_id` | int | Sınıf öğretmeni |
+| `name` | varchar(100) | Sınıf adı (örn: "10-A Matematik") |
+| `code` | varchar(20) | **Otomatik oluşturulan** 8 haneli kod (örn: "A8K9X2M1") |
+| `academic_year` | varchar(50) | Akademik yıl (örn: "2024-2025") |
+| `term` | varchar(50) | Dönem (örn: "Güz", "Bahar") |
 
-### Supabase Kurulumu:
-1. Supabase projesi oluştur
-2. SQL Editor'da migration dosyalarını sırayla çalıştır:
-    ```sql
-    -- 1. Temel veritabanı yapısını oluştur
-    -- database/supabase/sql_editorde_calistirilicaklar/1-create_database.sql
-    
-    -- 2. Roller ve izinleri ayarla  
-    -- database/supabase/sql_editorde_calistirilicaklar/2-roller_ve_izinler_olustur.sql
-    
-    -- 3. Auth UUID kolonu ekle
-    -- database/supabase/sql_editorde_calistirilicaklar/3-usera_uuid_sutunu_ekle.sql
-    
-    -- 4. Auth trigger sistemi
-    -- database/supabase/sql_editorde_calistirilicaklar/4-auth_ile_user_bağlama.sql
-    
-    -- 5. Sınıf kodu üreticisi
-    -- database/supabase/sql_editorde_calistirilicaklar/5-class_code_generator.sql
-    ```
+**Özellik:** `code` kolonu trigger ile otomatik oluşturulur (benzersiz, 8 karakter).
 
-### PostgreSQL Kurulumu:
-1. Yeni bir veritabanı oluştur:
-    ```bash
-    createdb ai_exam_system
-    ```
+### `class_members` Tablosu
+Öğrencilerin sınıflara katılım kayıtları.
 
-2. Migration dosyalarını sırayla çalıştır:
-    ```bash
-    psql -U postgres -d ai_exam_system -f sql/1-create_database.sql
-    psql -U postgres -d ai_exam_system -f sql/2-roller_ve_izinler_olustur.sql
-    psql -U postgres -d ai_exam_system -f sql/3-usera_uuid_sutunu_ekle.sql
-    psql -U postgres -d ai_exam_system -f sql/4-auth_ile_user_bağlama.sql
-    psql -U postgres -d ai_exam_system -f sql/5-class_code_generator.sql
-    ```
+**Amaç:** Öğrenci-sınıf ilişkisini yönetmek (soft delete destekli).
 
-3. Kurulumdan sonra tabloları doğrula:
-    ```bash
-    psql -U postgres -d ai_exam_system
-    \dt
-    \d+ users
-    \d+ schools
-    \d+ class_members
-    ```
-    
-4. Performans indekslerini ve triggerları kontrol et:
-    ```sql
-    -- İndeksleri listele
-    \di+ idx_*
-    
-    -- Triggerları listele
-    SELECT trigger_name, event_object_table 
-    FROM information_schema.triggers 
-    WHERE trigger_name LIKE '%updated_at%';
-    ```
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `id` | int | Üyelik ID |
+| `class_id` | int | Sınıf referansı |
+| `student_id` | int | Öğrenci referansı |
+| `joined_at` | timestamptz | Katılım tarihi |
+| `deleted_at` | timestamptz | Silinme tarihi (soft delete) |
+
+**Önemli:** `deleted_at = NULL` olan kayıtlar aktif üyeliklerdir. Aynı öğrenci aynı sınıfa birden fazla kez eklenemez (aktif kayıtlar için).
+
+### `syllabi` Tablosu
+Sınıf müfredatları (PDF/Word dosyaları).
+
+**Amaç:** Müfredat dosyalarını saklamak.
+
+### `syllabus_topics` Tablosu
+Müfredat konu başlıkları (hiyerarşik yapı).
+
+**Amaç:** Konuları organize etmek ve sınav sorularını konulara bağlamak.
+
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `parent_topic_id` | int | Üst konu (NULL ise ana konu) |
+| `topic_name` | varchar(255) | Konu adı |
+| `expected_week` | int | Planlandığı hafta |
+
+**Örnek Hiyerarşi:**
+```
+Matematik (parent_topic_id = NULL)
+  ├── Cebir (parent_topic_id = 1)
+  │   ├── Denklemler (parent_topic_id = 2)
+  │   └── Eşitsizlikler (parent_topic_id = 2)
+  └── Geometri (parent_topic_id = 1)
+```
 
 ---
 
-## 🔄 Versiyon Geçmişi
+## 📝 4. Sınav ve Değerlendirme Yönetimi
 
-- **v1.0**: MVP versiyonu - Temel tablolar
-- **v2.4**: JSONB varsayılan değerleri, hiyerarşik konu yapısı, çoklu sayfa desteği
-- **v3.1**: Multi-tenant okul yönetimi, detaylı yetki sistemi (46 izin), Supabase auth entegrasyonu
-- **v3.3**: Soft delete desteği, performans indeksleri, otomatik timestamp triggerları, final optimizasyonlar
-- **v3.3+**: Supabase entegrasyonu, API endpoint'leri, RLS politikaları, sınıf kodu üreticisi
+### `exams` Tablosu
+Öğretmenlerin oluşturduğu sınavlar.
+
+**Amaç:** Sınav içeriğini ve cevap anahtarını saklamak.
+
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `id` | int | Sınav ID |
+| `class_id` | int | Hangi sınıf için |
+| `title` | varchar(150) | Sınav başlığı |
+| `exam_content` | text | Sınav metni/soruları |
+| `answer_key` | jsonb | Cevap anahtarı (JSON formatında) |
+| `status` | enum | `draft`, `published`, `archived` |
+
+**Durum Akışı:**
+- `draft` → Sınav hazırlanıyor
+- `published` → Öğrencilere açıldı
+- `archived` → Arşivlendi
+
+### `exam_questions` Tablosu
+Sınav sorularının detayları.
+
+**Amaç:** Her soruyu müfredat konusuna bağlamak ve puanlandırmak.
+
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `exam_id` | int | Sınav referansı |
+| `topic_id` | int | Müfredat konusu |
+| `question_number` | int | Soru numarası (1, 2, 3...) |
+| `question_text` | text | Soru metni |
+| `points` | float | Puan değeri |
+
+### `student_papers` Tablosu
+Öğrencilerin yüklediği sınav kağıtları ve değerlendirmeler.
+
+**Amaç:** AI puanlaması ve öğretmen geri bildirimini saklamak.
+
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `id` | int | Kağıt ID |
+| `exam_id` | int | Hangi sınav |
+| `student_id` | int | Hangi öğrenci |
+| `ai_score` | float | AI'ın verdiği puan |
+| `teacher_score` | float | Öğretmenin verdiği final puan |
+| `feedback` | text | Geri bildirim metni |
+| `evaluation_summary` | jsonb | Değerlendirme detayları (JSON) |
+| `ocr_student_info` | jsonb | OCR ile tespit edilen öğrenci bilgisi |
+| `status` | enum | Kağıt durumu |
+
+**Durum Akışı:**
+- `pending` → Yüklendi, işlem bekliyor
+- `identifying` → OCR çalışıyor
+- `needs_identification` → Öğrenci tespiti manuel onay gerekiyor
+- `evaluated` → AI değerlendirmesi tamamlandı
+- `published` → Öğrenciye gösterildi
+
+### `student_paper_files` Tablosu
+Sınav kağıdı sayfa görüntüleri.
+
+**Amaç:** Her kağıdın sayfalarını ayrı ayrı saklamak ve OCR yapmak.
+
+| Kolon | Tip | Açıklama |
+|-------|-----|----------|
+| `paper_id` | int | Hangi kağıt |
+| `page_image_path` | varchar(255) | Dosya yolu |
+| `page_number` | int | Sayfa numarası (1, 2, 3...) |
+| `ocr_text` | jsonb | OCR çıktısı (JSON) |
+
+**Önemli:** `(paper_id, page_number)` benzersizdir - aynı kağıtta aynı sayfa numarası tekrar edemez.
 
 ---
 
-## 📂 SQL Dosyaları
+## 🗺️ Veritabanı Şeması
 
-Veritabanı SQL dosyalarına [Database SQL](/docs/database/sql) bölümünden ulaşabilirsiniz.
+Tüm tabloların görsel ilişki diyagramı:
+
+{{< figure src="/images/schema.png" alt="Database Schema" >}}
+
+
+## 🔧 Önemli Özellikler
+
+### 1. Otomatik Trigger'lar
+
+**Sınıf Kodu Üretimi:**
+```sql
+-- classes tablosuna INSERT edildiğinde otomatik kod oluşturur
+TRIGGER: classes_generate_code_trigger
+FUNCTION: generate_class_code()
+```
+- 8 karakterli benzersiz kod (örn: "K7M2X9P1")
+- Sadece code NULL ise çalışır
+- Çakışma kontrolü ile benzersizlik garantisi
+
+**Otomatik Timestamp Güncelleme:**
+```sql
+-- Her UPDATE'te updated_at otomatik güncellenir
+TRIGGER: set_updated_at_trigger
+TABLES: users, classes, exams, student_papers
+```
+
+**Cascade Delete:**
+```sql
+-- Sınıf silindiğinde üyelikleri de siler
+TRIGGER: trigger_delete_class_members_when_a_class_deleted
+```
+
+### 2. Fonksiyonlar
+
+**Kullanıcı Kaydı (Supabase Auth):**
+```sql
+handle_new_auth_user()
+```
+**Amaç:** Supabase Auth'da yeni kullanıcı oluştuğunda otomatik olarak `users` tablosuna ekler.
+
+**İşleyişi:**
+1. Kullanıcı Supabase'de kayıt olur
+2. Trigger otomatik çalışır
+3. `auth_user_id` ile users tablosuna kaydedilir
+4. Role ve school bilgileri metadata'dan alınır
+
+**Sınıfa Katılma:**
+```sql
+join_class_by_code(p_class_code text) → json
+```
+**Amaç:** Öğrencinin kod ile sınıfa katılmasını sağlar.
+
+**Kontroller:**
+- Kullanıcı öğrenci mi?
+- Sınıf kodu geçerli mi?
+- Öğrenci ve sınıf aynı okulda mı?
+- Öğrenci zaten üye mi?
+
+**Sınıf Öğrencilerini Listeleme:**
+```sql
+get_class_students(p_class_id int) → TABLE
+```
+**Amaç:** RLS politikalarını bypass ederek sınıftaki öğrencileri döndürür (SECURITY DEFINER).
+
+**Öğrenci Sayısı:**
+```sql
+get_class_student_count(p_class_id int) → int
+```
+**Amaç:** Bir sınıftaki aktif öğrenci sayısını döndürür.
+
+**Öğrencinin Sınıfları:**
+```sql
+get_student_classes() → TABLE
+```
+**Amaç:** Giriş yapan öğrencinin kayıtlı olduğu tüm sınıfları döndürür.
+
+### 3. Row Level Security (RLS) Politikaları
+
+**Classes Tablosu:**
+- ✅ Öğretmenler sadece kendi sınıflarını görebilir
+- ✅ Öğretmenler sadece kendi sınıflarını silebilir/güncelleyebilir
+- ✅ Sadece öğretmen, admin ve editörler sınıf oluşturabilir
+
+**Class Members Tablosu:**
+- ✅ Öğretmenler kendi sınıflarının üyelerini görebilir
+- ✅ Öğrenciler kendi üyeliklerini görebilir
+- ✅ Öğretmenler öğrencileri sınıftan çıkarabilir
+- ✅ Öğrenciler kendi üyeliklerini silebilir (sınıftan ayrılma)
+
+**Schools Tablosu:**
+- ✅ Herkes okul listesini görebilir (public read)
+
+
+
+## 📋 Veri Durumları (ENUM)
+
+### exam_status
+- `draft` - Taslak (henüz yayınlanmadı)
+- `published` - Yayında (öğrenciler görebilir)
+- `archived` - Arşivlendi (pasif)
+
+### paper_status
+- `pending` - Yüklendi, işlem bekliyor
+- `identifying` - OCR ile öğrenci tespiti yapılıyor
+- `needs_identification` - Manuel öğrenci eşleştirmesi gerekli
+- `evaluated` - AI değerlendirmesi tamamlandı
+- `published` - Öğrenciye gösterildi
 
 ---
 
-## 📜 Lisans
+## 📚 İlgili Dokümantasyon
 
-Bu proje Mehmet Ali GÜMÜŞLER tarafından hazırlanmıştır.  
-Kişisel ve eğitimsel kullanım içindir.  
-© 2025 Mehmet Ali GÜMÜŞLER
+### Veritabanı Detayları
+- **[Trigger'lar](/docs/database/triggers/)** - Otomatik işlemler ve trigger fonksiyonları
+- **[Fonksiyonlar](/docs/database/functions/)** - PostgreSQL fonksiyonları ve kullanım örnekleri
+- **[RLS Politikaları](/docs/database/policies/)** - Row Level Security ve güvenlik kuralları
+
+### Geliştirme Rehberleri
+- **[Supabase Kurulum](/docs/supabase/)** - Adım adım kurulum rehberi
+- **[REST API Rehberi](/docs/guides/rest_api_guide_1/)** - API kullanım örnekleri
+- **[RBAC Güvenlik](/docs/reference/01_rbac_security/)** - Rol bazlı erişim kontrolü
+
+---
+

@@ -6,3 +6,7 @@ resources/
 *~
 .DS_Store
 node_modules/
+schema.txt
+functions.txt
+policies.txt
+triggers.txt

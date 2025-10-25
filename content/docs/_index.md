@@ -5,11 +5,11 @@ bookFlatSection: false
 bookCollapseSection: false
 ---
 
-# Okula Bukula Dokümantasyonu
+# Intronauts Mobile App Dokümantasyonu
 
 **Yapay Zekâ Destekli Sınav Değerlendirme Platformu**
 
-Hoş geldiniz! Bu dokümantasyon, Okula Bukula projesinin tüm teknik detaylarını, kurulum adımlarını ve kullanım kılavuzlarını içermektedir.
+Hoş geldiniz! Bu dokümantasyon, intronauts projesinin tüm teknik detaylarını, kurulum adımlarını ve kullanım kılavuzlarını içermektedir.
 
 ---
 
@@ -36,9 +36,11 @@ Projenin genel tanıtımı, özellikleri ve sistem bileşenleri hakkında detayl
 - Supabase entegrasyonu
 
 ### [Rehberler](/docs/guides/)
+- Dosya yapısı ve organizasyon rehberi
 - Implementasyon rehberleri
 - Özellik geliştirme adımları
 - Best practices
+- Mimari açıklamalar
 
 ### [Güvenlik ve Referans](/docs/reference/)
 - RBAC güvenlik sistemi
@@ -134,19 +136,3 @@ Sol menüden istediğiniz bölüme gidin ve detaylı bilgi alın.
 - Kullanıcı ve rol yönetimi
 - Güvenlik yapılandırması
 
----
-
-## Destek ve Katkı
-
-Sorularınız veya katkılarınız için:
-- **GitHub**: [Intronauts/intronauts-hugo-documentation](https://github.com/Intronauts/intronauts-hugo-documentation)
-- **Yazar**: Mehmet Ali GÜMÜŞLER
-- **Versiyon**: v3.3 (Final Extended)
-
----
-
-## Lisans
-
-Bu proje Mehmet Ali GÜMÜŞLER tarafından hazırlanmıştır.  
-Kişisel ve eğitimsel kullanım içindir.  
-© 2025 Mehmet Ali GÜMÜŞLER
