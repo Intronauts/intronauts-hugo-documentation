@@ -33,6 +33,17 @@ Supabase ile özellik geliştirme ve REST API entegrasyonu için adım adım reh
 - Flutter entegrasyonu
 - Hata çözme ve debugging
 
+### [Google Auth & Şifre Sıfırlama Rehberi](/docs/guides/google_auth_and_password_recovery/)
+Flutter uygulamasında Google OAuth ve şifre sıfırlama işlemlerinin implementasyonu.
+
+**İçerik:**
+- Google ile giriş (OAuth) kurulumu
+- Deep link yapılandırması (Android/iOS)
+- Şifre sıfırlama akışı
+- SMTP (Resend) entegrasyonu
+- Postman test örnekleri
+- Hata ayıklama ve güvenlik notları
+
 ### [Implementation Guide](/docs/guides/implementation_guide/)
 Okula Bukula sisteminin implementasyon rehberi ve teknik detaylar.
 

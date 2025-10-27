@@ -14,7 +14,6 @@ Bu bölümde projeye yapılan tüm değişikliklerin detaylı kayıtları bulunm
 
 - [19 Ekim 2025 - Öğretmen Sayfaları Reorganizasyonu](/docs/changelog/19-10-2025/)
 - [17 Ekim 2025 - Sınıf Yönetimi Geliştirmeleri](/docs/changelog/17-10-2025/)
-- [14 Ekim 2025 - Flutter Uygulama Refactoring](/docs/changelog/14-10-2025-flutter-refactor/)
 - [14 Ekim 2025 - Sınıf Yönetimi İyileştirmeleri](/docs/changelog/2025-10-14/)
 - [12 Ekim 2025 - Sınıf Oluşturma API Entegrasyonu](/docs/changelog/12-10-2025/)
 - [Tüm Geçmiş](/docs/changelog/gecmis/)
